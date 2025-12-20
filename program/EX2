@@ -1,0 +1,90 @@
+# Node class to represent each element in the list
+class Node:
+    def __init__(self, data):
+        self.data = data # stores the value of the node
+        self.next = None # points to the next node in the list
+
+# SinglyLinkedList class represents the linked list itself
+class SinglyLinkedList:
+    def __init__(self):
+        self.head = None # head points to the first node in the list
+
+    # Create a singly linked list (by adding the first node)
+    def create(self, data):
+        self.head = Node(data)
+        print(f"List created with head node: {data}")
+
+    # Add a node to the start of the singly linked list
+    def addstart(self, data):
+        new_node = Node(data) # create a new node
+        new_node.next = self.head # the new node points to the current head
+        self.head = new_node # the new node becomes the new head
+        print(f"Added node with value {data}")
+
+    # Remove an element from the singly linked list by value
+    def remove(self, data):
+        current = self.head
+        if not current: # if list is empty
+            print("List is empty")
+            return
+        
+        # If the element to be deleted is the head
+        if current.data == data:
+            self.head = current.next
+            print(f"Removed element {data} from head")
+            return
+        
+        # Traverse to find the element to delete
+        prev = None
+        while current and current.data != data:
+            prev = current
+            current = current.next
+        
+        # If element not found
+        if not current:
+            print(f"Element {data} not found in the list")
+            return
+        
+        # Remove the element
+        prev.next = current.next
+        print(f"Removed element {data}")
+
+    # Display the linked list
+    def display(self):
+        if not self.head:
+            print("The list is empty")
+            return
+        
+        current = self.head
+        while current:
+            print(current.data, end=" -> ")
+            current = current.next
+        print("None")
+
+# Driver code to interact with the list
+sll = SinglyLinkedList()
+while True:
+    print("\n1. Create list")
+    print("2. Add to start of list")
+    print("3. Remove from list")
+    print("4. Display list")
+    print("5. Exit")
+    
+    choice = int(input("\nEnter your choice: "))
+    if choice == 1:
+        data = int(input("Enter the value for the head node: "))
+        sll.create(data)
+    elif choice == 2:
+        data = int(input("Enter the value to add to start: "))
+        sll.addstart(data)
+    elif choice == 3:
+        data = int(input("Enter the value to remove: "))
+        sll.remove(data)
+    elif choice == 4:
+        print("Current Linked List: ")
+        sll.display()
+    elif choice == 5:
+        print("Exiting...")
+        break
+    else:
+        print("Invalid choice. Please try again.")
