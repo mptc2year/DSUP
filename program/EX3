@@ -1,0 +1,53 @@
+class Stack:
+    def __init__(self):
+        self.stack = []
+
+    # Push Method
+    def push(self, item):
+        self.stack.append(item)
+        print(f"{item} pushed to stack.")
+
+    # Pop Method
+    def pop(self):
+        if not self.isempty():
+            ritem = self.stack.pop()
+            print(f"{ritem} popped from stack.")
+            return ritem
+        else:
+            print("Stack is empty! Cannot pop an element.")
+            return None
+
+    # Method to check if the stack is empty
+    def isempty(self):
+        return len(self.stack) == 0
+
+    # Method to display all elements in the stack
+    def display(self):
+        if not self.isempty():
+            print("Stack elements from top to bottom:")
+            for item in reversed(self.stack):
+                print(item)
+        else:
+            print("Stack is empty!")
+
+s = Stack()
+while True:
+    print("\nMenu:")
+    print("1. Push element to stack")
+    print("2. Pop element from stack")
+    print("3. Display stack")
+    print("4. Exit")
+    
+    choice = int(input("Enter your choice: "))
+    if choice == 1:
+        item = int(input("Enter the value to push onto the stack: "))
+        s.push(item)
+    elif choice == 2:
+        s.pop()
+    elif choice == 3:
+        s.display()
+    elif choice == 4:
+        print("Exiting...")
+        break
+    else:
+        print("Invalid choice! Please select a valid option.")
