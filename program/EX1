@@ -1,1 +1,30 @@
+# Create an empty list
+newlist = []
+print("List created.")
+print("Current list:", newlist)
+
+# Add elements
+n = int(input("Enter the number of elements you want to add: "))
+for i in range(n):
+    x = int(input(f"Enter element {i+1} to add to the list: "))
+    newlist.append(x)
+print("List after adding elements:", newlist)
+
+# Access elements
+index = int(input("Enter the index of the element you want to access: "))
+if 0 <= index < len(newlist):
+    print("Element at index", index, ":", newlist[index])
+else:
+    print("Index out of range")
+
+# Remove elements
+index = int(input("Enter the index of the element to remove: "))
+if 0 <= index < len(newlist):
+    r = newlist.pop(index)
+    print("Removed element:", r)
+else:
+    print("Index out of range")
+
+# Display the final list
+print("Final list elements are:", newlist)
 
